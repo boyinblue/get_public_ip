@@ -6,6 +6,8 @@ hostname=$(hostname)
 serial_number_path="tmp/serial_number.txt"
 email_content="tmp/email.txt"
 output_file="tmp/issue_update.json"
+user="boyinblue"
+repo="get_public_ip"
 
 id=""
 token=""
@@ -98,7 +100,7 @@ function new_issue
     -u ${id}:${token} \
     -H "Accept: application/vnd.github.v3+json" \
     --data-binary @- \
-    https://api.github.com/repos/${id}/raspberry/issues
+    https://api.github.com/repos/${user}/${repo}/issues
   set +x
 }
 
@@ -125,7 +127,7 @@ function update_issue
     -X PATCH \
     -H "Accept: application/vnd.github.v3+json" \
     --data-binary @- \
-    https://api.github.com/repos/${id}/raspberry/issues/${issue_number}
+    https://api.github.com/repos/${user}/${repo}/issues/${issue_number}
 }
 
 git pull
